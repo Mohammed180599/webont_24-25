@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Mohammed El Yabraki",
+    "email": "elyab15@hotmail.com",
+    "expenses": [
+      {
+        "id": "1728242055664",
+        "description": "kaasblokjes",
+        "amount": 14,
+        "date": "2024-10-06T19:14:26.752Z",
+        "currency": "EUR",
+        "paymentMethod": {
+          "method": "PayPal"
+        },
+        "isIncoming": true,
+        "category": "huur",
+        "tags": [
+          "heel lekker",
+          " zout",
+          " het smelt"
+        ],
+        "isPaid": true
+      },
+      {
+        "id": "1728242388614",
+        "description": "een lekkere pizza",
+        "amount": 50,
+        "date": "2024-10-06T19:20:04.861Z",
+        "currency": "USD",
+        "paymentMethod": {
+          "method": "Bank Transfer",
+          "bankAccountNumber": "12304560"
+        },
+        "isIncoming": true,
+        "category": "drank",
+        "tags": [
+          "lekker",
+          " koud"
+        ],
+        "isPaid": true
+      }
+    ],
+    "budget": {
+      "monthlyLimit": 1000,
+      "notificationThreshold": 0.9,
+      "isActive": true
+    }
+  }
+]
