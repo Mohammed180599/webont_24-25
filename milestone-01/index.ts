@@ -87,9 +87,9 @@ function main() {
 
     const action = readlineSync.question('Wil je een uitgave toevoegen of je uitgaven bekijken? (toevoegen/bekijken): ');
 
-    if (action === 'toevoegen') {
+    if (action.toLowerCase() === 'toevoegen') {
         addExpense(user);
-    } else if (action === 'bekijken') {
+    } else if (action.toLowerCase() === 'bekijken') {
         viewExpenses(user);
     } else {
         console.log('Ongeldige actie.');
