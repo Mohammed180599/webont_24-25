@@ -1,45 +1,121 @@
-/* General Body Styling */
+/* Algemene Body Styling */
 body {
   font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Stack header, content, and footer */
+  background: linear-gradient(135deg, #232526, #414345); /* Donker thema achtergrond */
+  color: #e0e0e0; /* Lichte tekstkleur */
+}
+
+/* Header Styling */
+header {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  width: 100%;
+}
+
+header h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #00bcd4; /* Accent color */
+}
+
+header nav a {
+  margin: 0 10px;
+  color: #e0e0e0;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  color: #00bcd4;
+}
+
+/* Footer Styling */
+footer {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.4);
+  width: 100%;
+}
+
+/* Main Content Wrapper */
+.content-wrapper {
+  flex: 1; /* Fills available vertical space */
+  display: flex;
+  justify-content: center; /* Center the main container horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Container Styling */
+.container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  background: linear-gradient(135deg, #1a1a1a, #000000);
+  align-items: flex-start;
+  gap: 30px; /* Ruimte tussen de boxen */
+  padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap; /* Zorgt dat boxen onder elkaar komen bij kleine schermen */
+}
+
+/* Info Box Styling */
+.info-box {
+  background: #2b2b2b; /* Donkere achtergrond */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtiele schaduw */
+  max-width: 400px;
+  flex: 1; /* Zorgt dat het dynamisch kan aanpassen */
+  text-align: left;
+}
+
+.info-box h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #00bcd4; /* Accentkleur voor de titel */
+}
+
+.info-box p {
+  font-size: 16px;
+  line-height: 1.6;
   color: #e0e0e0;
 }
 
-/* Login Form Container */
+/* Login Form Styling */
 .login-form {
-  background: #121212;
-  padding: 50px 40px; /* Increased padding inside the box */
+  background: #1e1e1e; /* Donkere achtergrond */
+  padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtiele schaduw */
   max-width: 400px;
+  flex: 1; /* Zorgt dat het dynamisch kan aanpassen */
   text-align: center;
-  animation: fadeIn 0.8s ease;
-  margin: 20px; /* Adds space between the box and other elements */
 }
 
-/* Heading Styling */
 .login-form h1 {
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: #e0e0e0;
 }
 
-/* Input Field Styling */
 .login-form input {
   width: 100%;
-  padding: 12px 15px;
-  margin: 20px 0; /* Added margin for space between fields */
+  padding: 12px;
+  margin: 15px 0;
   border: 1px solid #444;
   border-radius: 5px;
   font-size: 16px;
-  background-color: #222;
+  background-color: #333;
   color: #e0e0e0;
   outline: none;
   transition: border-color 0.3s;
@@ -50,19 +126,17 @@ body {
   box-shadow: 0 0 5px rgba(0, 188, 212, 0.8);
 }
 
-/* Button Styling */
 .login-form button {
   width: 100%;
   padding: 12px;
   background: #00bcd4;
-  color: #121212;
+  color: #1e1e1e;
   border: none;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
-  margin-top: 20px; /* Space between the button and the input fields */
 }
 
 .login-form button:hover {
@@ -74,45 +148,105 @@ body {
   transform: scale(0.98);
 }
 
-/* Placeholder Text */
-.login-form input::placeholder {
-  color: #888;
-  font-size: 14px;
-}
-
-/* Footer Text (Optional) */
-.login-form .footer-text {
+/* Actie Knoppen */
+.actions {
   margin-top: 20px;
-  font-size: 14px;
-  color: #888;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
-.login-form .footer-text a {
-  color: #00bcd4;
-  text-decoration: none;
-  transition: color 0.3s;
+.actions button {
+  padding: 12px 20px;
+  background: #00bcd4;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.login-form .footer-text a:hover {
-  color: #008ba3;
+.actions button:hover {
+  background: #008ba3;
+  transform: scale(1.05);
 }
+
+.actions button:active {
+  transform: scale(0.95);
+}
+
+
+/* Formulier Styling */
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.expense-form label {
+  font-size: 16px;
+  color: #e0e0e0;
+}
+
+.expense-form input,
+.expense-form select,
+.expense-form button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background: #333;
+  color: #e0e0e0;
+  outline: none;
+}
+
+.expense-form input:focus,
+.expense-form select:focus {
+  border-color: #00bcd4;
+}
+
+.expense-form button {
+  background: #00bcd4;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.expense-form button:hover {
+  background: #008ba3;
+}
+
+/* Uitgavenlijst Styling */
+.expenses-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.expense-card {
+  background: #2b2b2b;
+  color: #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: left;
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .login-form {
-    width: 90%;
-    padding: 30px; /* Adjusted for smaller screens */
+  .container {
+    flex-direction: column; /* Boxen onder elkaar */
+    align-items: center;
   }
-}
 
-/* Fade-In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .info-box,
+  .login-form {
+    max-width: 90%; /* Breder op kleinere schermen */
   }
 }
