@@ -1,10 +1,9 @@
-export interface PaymentMethod {
-    method: string;
-    cardDetails?: {
-        number: string;
-        expiry: string;
-    };
-    bankAccountNumber?: string;
+export interface User {
+    id: string;
+    name: string;
+    email: string;
+    expenses: Expense[];
+    budget: Budget;
 }
 
 export interface Expense {
@@ -26,10 +25,11 @@ export interface Budget {
     isActive: boolean;
 }
 
-export interface User {
-    id: string;
-    name: string;
-    email: string;
-    expenses: Expense[];
-    budget: Budget;
+export interface PaymentMethod {
+    method: string;
+    cardDetails?: {
+        number: string;
+        expiry: string;
+    };
+    bankAccountNumber?: string;
 }

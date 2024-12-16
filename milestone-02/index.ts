@@ -69,13 +69,13 @@ app.get("/login", (req, res) => {
 
 // Login form submission
 app.post("/login", (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     // Placeholder: Simpel validatievoorbeeld
-    if (username === "user" && password === "password") {
+    if (email === "user@ap.be" && password === "password") {
         res.redirect("/index");
     } else {
-        res.status(400).send("Invalid username or password");
+        res.status(400).send("Invalid mail adress or password");
     }
 });
 
