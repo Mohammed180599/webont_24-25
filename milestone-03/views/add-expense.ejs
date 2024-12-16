@@ -1,0 +1,85 @@
+<%- include('partials/header') %>
+
+<div class="content-wrapper">
+  <div class="container">
+    <div class="info-box">
+      <h1>Kosten Toevoegen</h1>
+      <form action="/add-expense" method="POST" class="expense-form">
+        <!-- Type: Uitgave of Inkomst -->
+        <label for="isIncoming">Type:</label>
+        <select id="isIncoming" name="isIncoming" required>
+          <option value="false">Uitgave</option>
+          <option value="true">Inkomst</option>
+        </select>
+
+        <!-- Beschrijving -->
+        <label for="description">Beschrijving:</label>
+        <input type="text" id="description" name="description" required />
+
+        <!-- Datum -->
+        <label for="date">Datum:</label>
+        <input type="date" id="date" name="date" value="<%= new Date().toISOString().split('T')[0] %>" required />
+
+        <!-- Bedrag -->
+        <label for="amount">Bedrag (€):</label>
+        <input type="number" id="amount" name="amount" step="0.01" required />
+
+        <!-- Betaalmethode -->
+        <label for="paymentMethod">Betaalmethode:</label>
+        <select id="paymentMethod" name="paymentMethod" onchange="togglePaymentDetails()" required>
+          <option value="Cash">Cash</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+          <option value="PayPal">PayPal</option>
+        </select>
+
+        <!-- Credit Card Details -->
+        <div id="creditCardDetails" style="display: none;">
+          <label for="cardNumber">Kaartnummer:</label>
+          <input type="text" id="cardNumber" name="cardDetails[number]" placeholder="**** **** **** ****" />
+
+          <label for="cardExpiry">Vervaldatum:</label>
+          <input type="text" id="cardExpiry" name="cardDetails[expiry]" placeholder="MM/YY" />
+        </div>
+
+        <!-- Bank Account Details -->
+        <div id="bankAccountDetails" style="display: none;">
+          <label for="bankAccountNumber">Rekeningnummer:</label>
+          <input type="text" id="bankAccountNumber" name="bankAccountNumber" placeholder="****1234" />
+        </div>
+
+        <!-- Categorie -->
+        <label for="category">Categorie:</label>
+        <select id="category" name="category" required>
+          <option value="income">Inkomen</option>
+          <option value="investment">Investering</option>
+          <option value="rent">Huur</option>
+          <option value="food">Eten</option>
+          <option value="vacation">Vakantie</option>
+          <option value="transport">Transport</option>
+          <option value="other">Overig</option>
+        </select>
+
+        <!-- Is Paid -->
+        <label for="isPaid">Betaald:</label>
+        <select id="isPaid" name="isPaid" required>
+          <option value="true">Ja</option>
+          <option value="false">Nee</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="submit">Uitgave / Inkomst Toevoegen</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function togglePaymentDetails() {
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    document.getElementById('creditCardDetails').style.display = paymentMethod === 'Credit Card' ? 'block' : 'none';
+    document.getElementById('bankAccountDetails').style.display = paymentMethod === 'Bank Transfer' ? 'block' : 'none';
+  }
+</script>
+
+<%- include('partials/footer') %>

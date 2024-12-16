@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<div class="content-wrapper">
+  <div class="container">
+    <!-- Welkom Bericht -->
+    <div class="info-box">
+      <h1>Welkom, <%= user.name %>!</h1>
+      <p>Gebruikers-ID: <%= user.id %></p>
+      <p>Maandelijks Budget: €<%= user.budget.monthlyLimit %></p>
+      <p>
+        Budget Notificaties: 
+        <% if (user.budget.isActive) { %>
+          Actief (Drempel: <%= user.budget.notificationThreshold * 100 %>%)
+        <% } else { %>
+          Inactief
+        <% } %>
+      </p>
+    </div>
+
+    <!-- Actie Knoppen -->
+    <div class="actions">
+      <button onclick="location.href='/add-expense'">Kosten Toevoegen</button>
+      <button onclick="location.href='/view-expenses'">Kosten Bekijken</button>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
