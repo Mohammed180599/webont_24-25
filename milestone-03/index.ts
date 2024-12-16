@@ -4,7 +4,7 @@ import path from "path";
 import { User, Expense } from "./interfaces"; // Import interfaces
 import { connect } from "./database";
 
-dotenv.config();
+dotenv.config({path:"../.env"});
 
 const app: Express = express();
 
