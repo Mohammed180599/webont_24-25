@@ -2,7 +2,7 @@ import { Collection, MongoClient } from "mongodb";
 import { Expense, User } from "./interfaces";
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({path:"../.env"});
 const uri : string = process.env.URI ?? "mongodb://localhost:27017";
 
 export const client = new MongoClient(uri);
