@@ -8,6 +8,9 @@ import sessionMiddleware from "./sessions";
 import { isAuthenticated, isNotAuthenticated, secureMiddleware } from "./authMiddleware";
 
 import data from "./data.json";
+
+import { loginRouter } from "./routes/loginRouter";
+
 dotenv.config();
 
 const app: Express = express();
@@ -17,7 +20,7 @@ app.use(express.json());
 app.use(sessionMiddleware);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(loginRouter());
 app.use((req, res, next) => {
     res.locals.session = req.session;
     next();
@@ -26,7 +29,7 @@ app.use((req, res, next) => {
 
 app.set("views", path.join(__dirname, "views"));
 
-app.set("port", process.env.PORT || 3000); // process.env.PORT || 3000
+app.set("port", 3000); // 
 
 //
 // ✅ User Routes
@@ -69,40 +72,52 @@ app.get("/", (req, res) => {
     res.redirect("/login");
 });
 
-// Login page
-app.get("/login", (req, res) => {
-    res.render("login");
-});
+// // Login page
+// app.get("/login", isNotAuthenticated, (req, res) => {
+//     res.render("login");
+// });
 
-// Login form submission
-app.post("/login", async (req, res: any) => {
-    const { email, password } = req.body;
+// // Login form submission
+// app.post("/login", async (req, res: any) => {
+//     const { email, password } = req.body;
 
-    try {
-        const user = await users.findOne({ email: email.toString() }) as User | null;
+//     try {
+//         const user = await users.findOne({ email: email.toString() }) as User | null;
 
-        if (!user) {
-            res.status(400).send("Ongeldig e-mailadres of wachtwoord");
-            return res.redirect("/login");
-        }
+//         if (!user) {
+//             res.status(400).send("Ongeldig e-mailadres of wachtwoord");
+//             return res.redirect("/login");
+//         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+//         const isPasswordValid = await bcrypt.compare(password, user.password);
 
-        if (!isPasswordValid) {
-            res.status(400).send("Ongeldig e-mailadres of wachtwoord");
-            return res.redirect("/login");
-        }
+//         if (!isPasswordValid) {
+//             res.status(400).send("Ongeldig e-mailadres of wachtwoord");
+//             return res.redirect("/login");
+//         }
 
-        // Sla de gebruikers-ID op in de sessie
-        req.session.user = user;
-        console.log(`Gebruiker ingelogd: ${user.name}`);
+//         // Sla de gebruikers-ID op in de sessie
+//         req.session.user = user;
+//         console.log(`Gebruiker ingelogd: ${user.name}`);
 
-        res.redirect("/index");
-    } catch (error) {
-        console.error("Fout bij inloggen:", error);
-        res.status(500).send("Interne serverfout bij inloggen.");
-    }
-});
+//         res.redirect("/index");
+//     } catch (error) {
+//         console.error("Fout bij inloggen:", error);
+//         res.status(500).send("Interne serverfout bij inloggen.");
+//     }
+// });
+
+// app.post("/logout", (req, res) => {
+//     req.session.destroy((err: any) => {
+//         if (err) {
+//             console.error("Fout bij uitloggen:", err);
+//             res.status(500).send("Uitloggen mislukt");
+//         }
+//         else {
+//             res.redirect("/login");
+//         }
+//     });
+// });
 
 // Index route
 app.get("/index", secureMiddleware, (req, res) => {
@@ -154,7 +169,7 @@ app.get("/view-expenses", secureMiddleware, async (req, res) => {
 });
 
 // Kosten Toevoegen - Verwerk formulier
-app.post("/add-expense", isAuthenticated, async (req: any, res) => {
+app.post("/add-expense", async (req: any, res) => {
     const { isIncoming, description, amount, paymentMethod, cardDetails, bankAccountNumber, category, isPaid } = req.body;
 
     const newExpense: Expense = {
@@ -259,18 +274,6 @@ app.get("/delete-expense/:id", async (req, res) => {
         console.error("Error deleting expense:", error);
         res.status(500).send("Internal Server Error");
     }
-});
-
-app.post("/logout", isAuthenticated, (req: Request, res: Response) => {
-    req.session.destroy((err: any) => {
-        if (err) {
-            console.error("Fout bij uitloggen:", err);
-            res.status(500).send("Uitloggen mislukt");
-        }
-        else {
-            res.redirect("/login");
-        }
-    });
 });
 
 // ✅ Toon Registratiepagina

@@ -75,7 +75,7 @@ export async function login(email: string, password: string) {
         throw new Error("Email en wachtwoord zijn vereist.");
     }
 
-    const user = await expenses.findOne({ email });
+    let user : User | null = await expenses.findOne({ email }) as User | null;
     if (user && (await bcrypt.compare(password, user.password!))) {
         return user;
     }
