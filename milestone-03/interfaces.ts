@@ -1,7 +1,9 @@
 export interface User {
+    ObjectId?: string;
     id: string;
     name: string;
     email: string;
+    password:string;
     expenses: Expense[];
     budget: Budget;
 }
@@ -17,6 +19,7 @@ export interface Expense {
     category: string;
     tags: string[];
     isPaid: boolean;
+    userId: string;
 }
 
 export interface Budget {

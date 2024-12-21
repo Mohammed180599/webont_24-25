@@ -6,7 +6,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column; /* Stack header, content, and footer */
-  background: linear-gradient(135deg, #232526, #414345); /* Donker thema achtergrond */
+  background: linear-gradient(135deg, #2c2c2c, #3b3b3b); /* Donker thema achtergrond */
   color: #e0e0e0; /* Lichte tekstkleur */
 }
 
@@ -14,22 +14,23 @@ body {
 header {
   background: #1e1e1e;
   color: #e0e0e0;
-  padding: 20px;
+  padding: 15px 20px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   width: 100%;
 }
 
 header h1 {
   font-size: 24px;
   margin: 0;
-  color: #00bcd4; /* Accent color */
+  color: #00bcd4; /* Accentkleur */
 }
 
 header nav a {
-  margin: 0 10px;
+  margin: 0 8px;
   color: #e0e0e0;
   text-decoration: none;
+  font-size: 14px;
 }
 
 header nav a:hover {
@@ -42,211 +43,204 @@ footer {
   color: #e0e0e0;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
   width: 100%;
 }
 
 /* Main Content Wrapper */
 .content-wrapper {
-  flex: 1; /* Fills available vertical space */
+  flex: 1;
   display: flex;
-  justify-content: center; /* Center the main container horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 /* Container Styling */
 .container {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 30px; /* Ruimte tussen de boxen */
-  padding: 20px;
-  max-width: 1200px;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
-  flex-wrap: wrap; /* Zorgt dat boxen onder elkaar komen bij kleine schermen */
+  max-width: 900px;
 }
 
 /* Info Box Styling */
 .info-box {
   background: #2b2b2b; /* Donkere achtergrond */
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtiele schaduw */
-  max-width: 400px;
-  flex: 1; /* Zorgt dat het dynamisch kan aanpassen */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   text-align: left;
 }
 
 .info-box h1 {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
-  color: #00bcd4; /* Accentkleur voor de titel */
+  margin-bottom: 15px;
+  color: #00bcd4; /* Accentkleur */
 }
 
 .info-box p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #e0e0e0;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-/* Login Form Styling */
-.login-form {
-  background: #1e1e1e; /* Donkere achtergrond */
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtiele schaduw */
-  max-width: 400px;
-  flex: 1; /* Zorgt dat het dynamisch kan aanpassen */
-  text-align: center;
+/* Filter- en Zoeksectie Styling */
+.filter-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: #2b2b2b;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.login-form h1 {
-  font-size: 28px;
+.filter-box form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-box label {
+  font-size: 14px;
   font-weight: bold;
-  margin-bottom: 20px;
   color: #e0e0e0;
 }
 
-.login-form input {
-  width: 100%;
-  padding: 12px;
-  margin: 15px 0;
+.filter-box select,
+.filter-box input[type="text"] {
+  padding: 6px 10px;
   border: 1px solid #444;
   border-radius: 5px;
-  font-size: 16px;
-  background-color: #333;
-  color: #e0e0e0;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.login-form input:focus {
-  border-color: #00bcd4;
-  box-shadow: 0 0 5px rgba(0, 188, 212, 0.8);
-}
-
-.login-form button {
-  width: 100%;
-  padding: 12px;
-  background: #00bcd4;
-  color: #1e1e1e;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.login-form button:hover {
-  background: #008ba3;
-  transform: scale(1.02);
-}
-
-.login-form button:active {
-  transform: scale(0.98);
-}
-
-/* Actie Knoppen */
-.actions {
-  margin-top: 20px;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.actions button {
-  padding: 12px 20px;
-  background: #00bcd4;
-  color: #1e1e1e;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.actions button:hover {
-  background: #008ba3;
-  transform: scale(1.05);
-}
-
-.actions button:active {
-  transform: scale(0.95);
-}
-
-
-/* Formulier Styling */
-.expense-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.expense-form label {
-  font-size: 16px;
-  color: #e0e0e0;
-}
-
-.expense-form input,
-.expense-form select,
-.expense-form button {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #444;
   background: #333;
   color: #e0e0e0;
-  outline: none;
+  font-size: 14px;
 }
 
-.expense-form input:focus,
-.expense-form select:focus {
-  border-color: #00bcd4;
-}
-
-.expense-form button {
+.filter-box button {
+  padding: 6px 12px;
   background: #00bcd4;
+  color: #1e1e1e;
   border: none;
-  font-weight: bold;
+  border-radius: 5px;
+  font-size: 14px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-.expense-form button:hover {
+.filter-box button:hover {
   background: #008ba3;
 }
 
-/* Uitgavenlijst Styling */
+/* Uitgaven Cards Styling */
 .expenses-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .expense-card {
   background: #2b2b2b;
   color: #e0e0e0;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  width: 300px;
-  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 280px;
 }
 
+.expense-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
+.expense-card p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.expense-card input,
+.expense-card select {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background: #3b3b3b;
+  color: #e0e0e0;
+}
+
+.expense-card input[readonly],
+.expense-card select[disabled] {
+  background: #444;
+  cursor: not-allowed;
+}
+
+/* Expense Actions Styling */
+.expense-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.expense-actions button {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.expense-actions button:first-child {
+  background: #00bcd4;
+  color: #1e1e1e;
+}
+
+.expense-actions button:first-child:hover {
+  background: #008ba3;
+}
+
+.expense-actions button[type="submit"] {
+  background: #4caf50;
+  color: white;
+}
+
+.expense-actions button[type="submit"]:hover {
+  background: #388e3c;
+}
+
+.expense-actions .delete-button {
+  background: #d32f2f;
+  color: white;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.expense-actions .delete-button:hover {
+  background: #b71c1c;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Boxen onder elkaar */
-    align-items: center;
+  .filter-box {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .info-box,
-  .login-form {
-    max-width: 90%; /* Breder op kleinere schermen */
+  .expenses-cards {
+    justify-content: flex-start;
+  }
+
+  .expense-card {
+    width: 100%;
   }
 }

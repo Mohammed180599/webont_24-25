@@ -7,18 +7,23 @@
       <h1>BudgetLens</h1>
       <p>Beheert je inkomsten en uitgaven op een overzichtelijke manier. Met BudgetLens houd je je financiële situatie eenvoudig en effectief in de gaten.</p>
     </div>
+    
     <!-- Login Form -->
     <div class="login-form">
       <h1>Inloggen</h1>
       <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="Gebruikersnaam" required />
+        <input type="email" name="email" placeholder="Email" required />
         <input type="password" name="password" placeholder="Wachtwoord" required />
         <button type="submit">Inloggen</button>
       </form>
+
+      <!-- Registratie Sectie -->
+      <div class="register-section">
+        <p>Nog geen account?</p>
+        <a href="/register" class="register-button">Registreer</a>
+      </div>
     </div>
   </div>
-</body>
-</html>
 </div>
 
 <%- include('partials/footer') %> <!-- Include footer -->

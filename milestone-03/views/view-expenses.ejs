@@ -3,21 +3,86 @@
 <div class="content-wrapper">
   <div class="container">
     <div class="info-box">
+      
+      <form action="/logout" method="POST">
+        <button type="submit">Uitloggen</button>
+      </form>
       <h1>Overzicht van Uitgaven</h1>
+
+      <!-- Filter- en Zoeksectie -->
+      <div class="filter-box">
+        <form method="get" action="/view-expenses">
+          <label for="filter">Filter op:</label>
+          <select name="filter" id="filter" onchange="this.form.submit()">
+            <option value="" <%= filter === '' ? 'selected' : '' %>>Alles</option>
+            <option value="true" <%= filter === 'true' ? 'selected' : '' %>>Inkomsten</option>
+            <option value="false" <%= filter === 'false' ? 'selected' : '' %>>Uitgaven</option>
+          </select>
+
+          <label for="search">Zoek op beschrijving:</label>
+          <input 
+            type="text" 
+            name="search" 
+            id="search" 
+            placeholder="Zoekterm invoeren..." 
+            value="<%= search || '' %>"
+          />
+          <button type="submit">Zoeken</button>
+        </form>
+      </div>
+
+      <!-- Uitgaven Cards -->
       <div class="expenses-cards">
-        <% expenses.forEach(expense => { %>
-          <div class="expense-card">
-            <h2><%= expense.description %></h2>
-            <p>Bedrag: €<%= expense.amount %></p>
-            <p>Valuta: <%= expense.currency %></p>
-            <p>Datum: <%= new Date(expense.date).toLocaleDateString() %></p>
-            <p>Categorie: <%= expense.category %></p>
-            <p>Betaald: <%= expense.isPaid ? "Ja" : "Nee" %></p>
-          </div>
-        <% }) %>
+        <% if (expenses.length > 0) { %>
+          <% expenses.forEach(expense => { %>
+            <form method="post" action="/update-expense/<%= expense.id %>" class="expense-form">
+              <div class="expense-card">
+                <h2>
+                  <input type="text" name="description" value="<%= expense.description %>" readonly />
+                </h2>
+                <p>Bedrag: <input type="number" name="amount" value="<%= expense.amount %>" readonly /></p>
+                <p>Valuta: <input type="text" name="currency" value="<%= expense.currency %>" readonly /></p>
+                <p>Datum: <input type="date" name="date" value="<%= expense.date.split('T')[0] %>" readonly /></p>
+                <p>Categorie: <input type="text" name="category" value="<%= expense.category %>" readonly /></p>
+                <p>
+                  Betaald: 
+                  <select name="isPaid" disabled>
+                    <option value="true" <%= expense.isPaid ? 'selected' : '' %>>Ja</option>
+                    <option value="false" <%= !expense.isPaid ? 'selected' : '' %>>Nee</option>
+                  </select>
+                </p>
+                <p>
+                  Type: 
+                  <select name="isIncoming" disabled>
+                    <option value="true" <%= expense.isIncoming ? 'selected' : '' %>>Inkomst</option>
+                    <option value="false" <%= !expense.isIncoming ? 'selected' : '' %>>Uitgave</option>
+                  </select>
+                </p>
+                <div class="expense-actions">
+                  <button type="button" onclick="enableEditing(this)">Aanpassen</button>
+                  <button type="submit" style="display: none;">Opslaan</button>
+                  <a href="/delete-expense/<%= expense.id %>" class="delete-button">Verwijderen</a>
+                </div>
+              </div>
+            </form>
+          <% }) %>
+        <% } else { %>
+          <p>Geen resultaten gevonden.</p>
+        <% } %>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  function enableEditing(button) {
+    const form = button.closest('.expense-form');
+    const inputs = form.querySelectorAll('input, select');
+    inputs.forEach(input => input.removeAttribute('readonly'));
+    inputs.forEach(input => input.removeAttribute('disabled'));
+    form.querySelector('button[type="submit"]').style.display = 'inline-block';
+    button.style.display = 'none';
+  }
+</script>
 
 <%- include('partials/footer') %>

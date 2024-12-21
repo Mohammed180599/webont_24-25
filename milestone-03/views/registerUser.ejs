@@ -1,0 +1,17 @@
+<%- include('partials/header') %> <!-- Include header -->
+
+<body>
+  <div class="register-container">
+    <h1>Maak een account</h1>
+    <form action="/register" method="POST">
+      <input type="text" name="name" placeholder="Naam" required />
+      <input type="email" name="email" placeholder="E-mail" required />
+      <input type="password" name="password" placeholder="Wachtwoord" required />
+      <button type="submit">Maak Account</button>
+    </form>
+    <p>Heb je al een account? <a href="/login">Inloggen</a></p>
+  </div>
+</body>
+</html>
+
+<%- include('partials/footer') %> <!-- Include footer -->

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "user1",
+    "name": "John Admin",
+    "email": "ap@ap.be",
+    "password": "hashit",
+    "expenses": [
+      {
+        "id": "expense1",
+        "description": "Pizza",
+        "amount": 25,
+        "date": "2024-12-01T18:30:00Z",
+        "currency": "EUR",
+        "paymentMethod": {
+          "method": "Credit Card",
+          "cardDetails": {
+            "number": "****1234",
+            "expiry": "12/24"
+          }
+        },
+        "isIncoming": false,
+        "category": "food",
+        "tags": ["pizza", "dinner"],
+        "isPaid": true,
+        "userId": "user1"
+      },
+      {
+        "id": "expense2",
+        "description": "Huur betalen",
+        "amount": 800,
+        "date": "2024-12-01T12:00:00Z",
+        "currency": "EUR",
+        "paymentMethod": {
+          "method": "Bank Transfer",
+          "bankAccountNumber": "BE123456789"
+        },
+        "isIncoming": false,
+        "category": "rent",
+        "tags": ["monthly"],
+        "isPaid": true,
+        "userId": "user1"
+      }
+    ],
+    "budget": {
+      "monthlyLimit": 2000,
+      "notificationThreshold": 0.9,
+      "isActive": true
+    }
+  }
+]
