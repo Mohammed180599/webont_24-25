@@ -30,20 +30,12 @@ export async function seedDatabase() {
 
         for (const user of data) {
             const { expenses: userExpenses, password, ...userData } = user;
-
-            // Hash het wachtwoord voordat je de gebruiker opslaat
             const hashedPassword = await bcrypt.hash(password, 10);
-
-            // Voeg het gehashte wachtwoord toe aan de gebruikersdata
             const userWithHashedPassword = {
                 ...userData,
                 password: hashedPassword,
             };
-
-            // Insert user data
             await users.insertOne(userWithHashedPassword);
-
-            // Insert user's expenses
             if (userExpenses && userExpenses.length > 0) {
                 const expensesWithUserId = userExpenses.map((expense: Expense) => ({
                     ...expense,
@@ -52,7 +44,6 @@ export async function seedDatabase() {
                 await expenses.insertMany(expensesWithUserId);
             }
         }
-
         console.log("Database seeded successfully.");
     } else {
         console.log("Database already has data. Skipping seed.");

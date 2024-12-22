@@ -5,13 +5,10 @@ import bcrypt from "bcrypt";
 import { User } from "../interfaces";
 
 export function loginRouter() {
-    const router = express.Router();
-    // Login page
+    const router = express.Router(); 
 router.get("/login", isNotAuthenticated, (req, res) => {
     res.render("login");
 });
-
-// Login form submission
 router.post("/login", async (req, res: any) => {
     const { email, password } = req.body;
 

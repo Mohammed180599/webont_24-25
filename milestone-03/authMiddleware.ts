@@ -18,12 +18,12 @@ export function isNotAuthenticated(req: Request, res: Response, next: NextFuncti
     next();
 }
 
-// Secure middleware cursus 
-// Secure middleware to ensure the user is authenticated
+
+// Secure middleware
 export function secureMiddleware(req: Request, res: Response, next: NextFunction) {
     if (req.session && req.session.user) {
-        res.locals.user = req.session.user; // Accessible in templates
-        req.user = req.session.user; // Accessible in routes
+        res.locals.user = req.session.user;
+        req.user = req.session.user;
         next();
     } else {
         res.redirect("/login");

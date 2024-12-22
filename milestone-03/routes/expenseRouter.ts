@@ -7,8 +7,7 @@ import { Expense, User } from "../interfaces";
 export function expenseRouter() {
     const router = express.Router();
 
-
-// Kosten Toevoegen - Toon formulier
+// Kosten Toevoegen
 router.get("/view-expenses", secureMiddleware, async (req, res: any) => {
     if (!req.user || !req.user.id) {
         return res.status(401).send("Je bent niet ingelogd.");
@@ -16,8 +15,6 @@ router.get("/view-expenses", secureMiddleware, async (req, res: any) => {
 
     const filter = req.query.filter as string;
     const search = req.query.search as string;
-
-    // Filter on logged-in user's ID
     let query: any = { userId: req.user.id };
 
     if (filter === "true") {
@@ -41,7 +38,7 @@ router.get("/view-expenses", secureMiddleware, async (req, res: any) => {
 });
 
 
-// Kosten Toevoegen - Verwerk formulier
+// Kosten Toevoegen
 router.post("/add-expense", secureMiddleware, async (req, res: any) => {
     const { isIncoming, description, amount, paymentMethod, cardDetails, bankAccountNumber, category, isPaid } = req.body;
 
@@ -64,7 +61,7 @@ router.post("/add-expense", secureMiddleware, async (req, res: any) => {
         category,
         tags: [],
         isPaid: isPaid === "on",
-        userId: req.user.id, // Correct association
+        userId: req.user.id,
     };
 
     await expenses.insertOne(newExpense);
@@ -74,17 +71,16 @@ router.post("/add-expense", secureMiddleware, async (req, res: any) => {
 });
 
 
-// Kosten Bekijken (met filter op isIncoming)
+// Kosten Bekijken
 router.get("/view-expenses", secureMiddleware, async (req, res: any) => {
     try {
         if (!req.user || !req.user.id) {
             return res.status(401).send("Je bent niet ingelogd.");
         }
-
         const filter = req.query.filter as string;
         const search = req.query.search as string;
 
-        // Basisquery: altijd filteren op de ingelogde gebruiker
+        // altijd filteren op de ingelogde gebruiker
         let query: any = { userId: req.user.id };
 
         if (filter === "true") {
@@ -113,7 +109,7 @@ router.get("/view-expenses", secureMiddleware, async (req, res: any) => {
 
 
 
-// Kosten Toevoegen - Toon formulier
+// Kosten Toevoegen
 router.get("/add-expense", secureMiddleware, (req, res) => {
     res.render("add-expense");
 });

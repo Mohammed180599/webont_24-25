@@ -8,20 +8,20 @@ export function userRouter() {
     const router = express.Router();
 
 
-// Read all users
+// Read alle users
 router.get("/users", async (req, res) => {
     const allUsers = await users.find().toArray();
     res.json(allUsers);
 });
 
-// Create a new user
+// Maak een nieuwe user aan
 router.post("/users", async (req, res) => {
     const newUser = req.body;
     await users.insertOne(newUser);
     res.send("User added successfully.");
 });
 
-// Update a user
+// Update een user
 router.put("/users/:id", async (req, res) => {
     const id = req.params.id;
     const updatedUser = req.body;
@@ -29,7 +29,7 @@ router.put("/users/:id", async (req, res) => {
     res.send("User updated successfully.");
 });
 
-// Delete a user
+// verwijderen van een user
 router.delete("/users/:id", async (req, res) => {
     const id = req.params.id;
     await users.deleteOne({ id });
@@ -38,5 +38,3 @@ router.delete("/users/:id", async (req, res) => {
 
 return router;
 }
-
-//routerNaam verander je naar de naam van je router en in uw indexts niet vergeten router importen! 

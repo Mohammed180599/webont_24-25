@@ -1,246 +1,301 @@
-/* Algemene Body Styling */
+/* ===== General Styles ===== */
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column; /* Stack header, content, and footer */
-  background: linear-gradient(135deg, #2c2c2c, #3b3b3b); /* Donker thema achtergrond */
-  color: #e0e0e0; /* Lichte tekstkleur */
+  font-family: Arial, sans-serif;
+  background-color: #1a2e24;
+  color: #d9e8e1;
 }
 
-/* Header Styling */
+a {
+  text-decoration: none;
+  color: #a4d4ae;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Header ===== */
 header {
-  background: #1e1e1e;
-  color: #e0e0e0;
-  padding: 15px 20px;
+  background-color: #234f3c;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  width: 100%;
 }
 
 header h1 {
-  font-size: 24px;
   margin: 0;
-  color: #00bcd4; /* Accentkleur */
 }
 
-header nav a {
-  margin: 0 8px;
-  color: #e0e0e0;
-  text-decoration: none;
-  font-size: 14px;
+header nav a,
+header nav button {
+  color: #d9e8e1;
+  margin: 0 0.5rem;
 }
 
-header nav a:hover {
-  color: #00bcd4;
+header nav button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-/* Footer Styling */
-footer {
-  background: #1e1e1e;
-  color: #e0e0e0;
-  padding: 10px;
-  text-align: center;
-  font-size: 12px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
-  width: 100%;
-}
-
-/* Main Content Wrapper */
+/* ===== Content Wrapper ===== */
 .content-wrapper {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 20px;
+  min-height: 80vh;
+  padding: 1rem;
 }
 
-/* Container Styling */
+/* ===== Container ===== */
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  max-width: 900px;
+  background-color: #2e4838;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+  text-align: center;
 }
 
-/* Info Box Styling */
+/* ===== Info Box ===== */
 .info-box {
-  background: #2b2b2b; /* Donkere achtergrond */
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  text-align: left;
+  margin-bottom: 1.5rem;
 }
 
 .info-box h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #00bcd4; /* Accentkleur */
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .info-box p {
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
-/* Filter- en Zoeksectie Styling */
-.filter-box {
+/* ===== Forms (General) ===== */
+form {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  background: #2b2b2b;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 400px;
 }
 
-.filter-box form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
+form input,
+form select,
+form button {
+  padding: 0.5rem;
+  border: 1px solid #3a6151;
+  border-radius: 4px;
 }
 
-.filter-box label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #e0e0e0;
+form input {
+  background-color: #1f352b;
+  color: #d9e8e1;
 }
 
-.filter-box select,
-.filter-box input[type="text"] {
-  padding: 6px 10px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  background: #333;
-  color: #e0e0e0;
-  font-size: 14px;
+form input::placeholder {
+  color: #a4d4ae;
 }
 
-.filter-box button {
-  padding: 6px 12px;
-  background: #00bcd4;
-  color: #1e1e1e;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
+form button {
+  background-color: #3a6151;
+  color: white;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.2s;
 }
 
-.filter-box button:hover {
-  background: #008ba3;
+form button:hover {
+  background-color: #28503c;
 }
 
-/* Uitgaven Cards Styling */
+/* ===== Login Form ===== */
+.login-form h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-form input {
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+/* ===== Register Section ===== */
+.register-section {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.register-section p {
+  margin-bottom: 0.5rem;
+}
+
+.register-section a {
+  font-weight: bold;
+}
+
+/* ===== Actions Buttons ===== */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.actions button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.actions button:hover {
+  background-color: #28503c;
+}
+
+/* Specific Button Colors */
+.actions button:first-child {
+  background-color: #4caf50;
+}
+
+.actions button:first-child:hover {
+  background-color: #388e3c;
+}
+
+.actions button:last-child {
+  background-color: #1976d2;
+}
+
+.actions button:last-child:hover {
+  background-color: #1565c0;
+}
+
+/* ===== Expenses Section ===== */
 .expenses-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 1rem;
   justify-content: center;
-  margin-top: 20px;
+  align-items: flex-start;
+  margin-top: 1rem;
 }
 
+/* Individual Expense Card */
 .expense-card {
-  background: #2b2b2b;
-  color: #e0e0e0;
-  padding: 15px;
+  background-color: #3a6151;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  width: 280px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .expense-card h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin: 0;
+  color: #d9e8e1;
 }
 
 .expense-card p {
-  font-size: 14px;
-  margin: 5px 0;
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  color: #a4d4ae;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .expense-card input,
 .expense-card select {
-  width: 100%;
-  padding: 5px;
-  margin-top: 5px;
-  font-size: 14px;
-  border: none;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #3a6151;
   border-radius: 4px;
-  background: #3b3b3b;
-  color: #e0e0e0;
+  background-color: #1f352b;
+  color: #d9e8e1;
+  font-size: 0.9rem;
+  width: 60%;
 }
 
-.expense-card input[readonly],
-.expense-card select[disabled] {
-  background: #444;
-  cursor: not-allowed;
-}
-
-/* Expense Actions Styling */
+/* Expense Actions */
 .expense-actions {
-  margin-top: 15px;
   display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .expense-actions button {
-  padding: 6px 10px;
-  font-size: 13px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
-  border: none;
+  transition: background-color 0.2s;
 }
 
 .expense-actions button:first-child {
-  background: #00bcd4;
-  color: #1e1e1e;
+  background-color: #f0ad4e;
+  color: white;
 }
 
 .expense-actions button:first-child:hover {
-  background: #008ba3;
+  background-color: #ec971f;
 }
 
 .expense-actions button[type="submit"] {
-  background: #4caf50;
+  background-color: #5cb85c;
   color: white;
+  display: none;
 }
 
 .expense-actions button[type="submit"]:hover {
-  background: #388e3c;
+  background-color: #4cae4c;
 }
 
 .expense-actions .delete-button {
-  background: #d32f2f;
+  background-color: #d9534f;
   color: white;
-  text-decoration: none;
-  padding: 6px 10px;
+  text-align: center;
+  padding: 0.4rem 0.8rem;
   border-radius: 4px;
+  text-decoration: none;
 }
 
 .expense-actions .delete-button:hover {
-  background: #b71c1c;
+  background-color: #c9302c;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .filter-box {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* ===== Filter Section ===== */
+.filter-box {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  .expenses-cards {
-    justify-content: flex-start;
-  }
+.filter-box label {
+  font-size: 0.9rem;
+  color: #d9e8e1;
+}
 
-  .expense-card {
-    width: 100%;
-  }
+.filter-box select,
+.filter-box input {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #3a6151;
+  border-radius: 4px;
+  background-color: #1f352b;
+  color: #d9e8e1;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #234f3c;
+  font-size: 0.9rem;
 }

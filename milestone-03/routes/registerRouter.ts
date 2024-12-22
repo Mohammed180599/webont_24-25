@@ -9,12 +9,11 @@ export function registerRouter() {
 
 
 
-// ✅ Toon Registratiepagina
+
 router.get("/register", (req, res) => {
     res.render("registerUser");
 });
 
-// ✅ Verwerk Registratieformulier
 router.post("/register", async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -43,5 +42,3 @@ router.post("/register", async (req, res) => {
 
 return router;
 }
-
-//routerNaam verander je naar de naam van je router en in uw indexts niet vergeten router importen! 

@@ -21,6 +21,7 @@ export default session({
     saveUninitialized: true,
     store: new MongoDBSessionStore({
         uri: uri,
+        databaseName: "milestone_3",
         collection: "sessions",
     }),
     cookie: {

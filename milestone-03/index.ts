@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 app.set("views", path.join(__dirname, "views"));
 app.set("port", process.env.PORT || 3000); // 
 
-// Redirect root to login
+// root moet naar login
 app.get("/", (req, res) => {
     res.redirect("/login");
 });
@@ -55,7 +55,7 @@ app.get("/index", secureMiddleware, async (req, res: any) => {
     }
 
     try {
-        // Fetch the full user object from the database
+        // user uit database halen
         const fullUser = await users.findOne({ id: req.user.id });
         
         if (!fullUser) {
@@ -69,8 +69,7 @@ app.get("/index", secureMiddleware, async (req, res: any) => {
     }
 });
 
-// Start Server
-
+// server starten
 
 app.listen(app.get("port"), async () => {
     await connect();
