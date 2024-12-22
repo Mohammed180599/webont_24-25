@@ -6,7 +6,7 @@ import { Expense } from "../interfaces";
 export function expenseRouter() {
     const router = express.Router();
 
-    // ✅ View all expenses
+    // View all expenses
     router.get("/view-expenses", secureMiddleware, async (req, res: any) => {
         try {
             if (!req.user || !req.user.id) {
@@ -40,7 +40,7 @@ export function expenseRouter() {
         }
     });
 
-    // ✅ Add new expense
+    // Add new expense
     router.post("/add-expense", secureMiddleware, async (req, res: any) => {
         const { isIncoming, description, amount, paymentMethod, cardDetails, bankAccountNumber, category, isPaid } = req.body;
 
@@ -72,7 +72,18 @@ export function expenseRouter() {
         res.redirect("/view-expenses");
     });
 
-    // ✅ Update an existing expense
+    // Display the Add Expense Page
+    router.get("/add-expense", secureMiddleware, (req, res: any) => {
+        if (!req.user || !req.user.id) {
+            return res.status(401).send("Je bent niet ingelogd.");
+        }
+
+        res.render("add-expense", {
+            user: req.user,
+        });
+    });
+
+    // Update an existing expense
     router.post("/update-expense/:id", secureMiddleware, async (req, res: any) => {
         const id = req.params.id;
         const { description, amount, currency, date, category, isPaid, isIncoming } = req.body;
@@ -105,7 +116,7 @@ export function expenseRouter() {
         res.redirect("/view-expenses");
     });
 
-    // ✅ Delete an expense
+    // Delete an expense
     router.get("/delete-expense/:id", secureMiddleware, async (req, res: any) => {
         const id = req.params.id;
 
