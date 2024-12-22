@@ -79,7 +79,6 @@ app.post("/login", (req, res) => {
     }
 });
 
-// Index route
 app.get("/index", (req, res) => {
     // Render de index pagina met gebruikersinformatie
     res.render("index", { user: currentUser });
@@ -95,7 +94,6 @@ app.get("/add-expense", (req, res) => {
 app.post("/add-expense", (req, res) => {
     const { isIncoming, description, amount, paymentMethod, cardDetails, bankAccountNumber, category, isPaid } = req.body;
 
-    // Create a new expense object
     const newExpense: Expense = {
         id: (expenses.length + 1).toString(),
         description,
@@ -116,14 +114,14 @@ app.post("/add-expense", (req, res) => {
     expenses.push(newExpense);
     console.log("Nieuwe uitgave toegevoegd:", newExpense);
 
-    // Redirect to the expenses view page
+
     res.redirect("/view-expenses");
 });
 
 
-// Kosten Bekijken
+
 app.get("/view-expenses", (req, res) => {
-    // Render de pagina om alle uitgaven te bekijken
+  
     res.render("view-expenses", { expenses });
 });
 

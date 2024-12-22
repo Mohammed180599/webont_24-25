@@ -7,7 +7,7 @@ const uri : string = process.env.URI ?? "mongodb://localhost:27017";
 
 export const client = new MongoClient(uri);
 export const users: Collection<User> = client.db("budgetlens").collection<User>("users");
-// export const expenses: Collection<Expense> = client.db("budgetlens").collection<Expense>("expenses");
+
 
 async function exit() {
     try {
