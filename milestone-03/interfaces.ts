@@ -44,6 +44,11 @@ export interface SessionUser {
     email: string;
 }
 
+export interface FlashMessage {
+    type: "error" | "success"
+    message: string;
+}
+
 // Tijdelijke code
 declare global {
     namespace Express {

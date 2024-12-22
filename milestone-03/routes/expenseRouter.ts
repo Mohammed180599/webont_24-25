@@ -36,6 +36,7 @@ export function expenseRouter() {
             });
         } catch (error) {
             console.error("Error fetching user-specific expenses:", error);
+
             res.status(500).send("Interne serverfout bij het ophalen van uitgaven.");
         }
     });
@@ -68,7 +69,7 @@ export function expenseRouter() {
 
         await expenses.insertOne(newExpense);
         console.log("New expense added:", newExpense);
-
+        req.session.message = "Expense succesvol toegevoegd.";
         res.redirect("/view-expenses");
     });
 
@@ -78,6 +79,7 @@ export function expenseRouter() {
             return res.status(401).send("Je bent niet ingelogd.");
         }
 
+        
         res.render("add-expense", {
             user: req.user,
         });
@@ -113,6 +115,7 @@ export function expenseRouter() {
         );
 
         console.log(`Expense ${id} updated successfully.`);
+        req.session.message = "Expense succesvol aangepast.";
         res.redirect("/view-expenses");
     });
 
@@ -131,6 +134,7 @@ export function expenseRouter() {
 
         await expenses.deleteOne({ id, userId: req.user.id });
         console.log(`Expense ${id} deleted successfully.`);
+        req.session.message = "Expense succesvol verwijderd.";
         res.redirect("/view-expenses");
     });
 

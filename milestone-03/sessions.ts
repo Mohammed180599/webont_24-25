@@ -1,7 +1,7 @@
 import session from "express-session";
 import MongoDBStore from "connect-mongodb-session";
 import dotenv from "dotenv";
-import { SessionUser, User } from "./interfaces";
+import { FlashMessage, SessionUser, User } from "./interfaces";
 
 dotenv.config();
 
@@ -12,6 +12,7 @@ const uri = process.env.URI || "mongodb://localhost:27017";
 declare module "express-session" {
     export interface SessionData {
         user: SessionUser;
+        message?: string;
     }
 }
 
@@ -30,3 +31,8 @@ export default session({
         secure: false, // Zet op 'true' bij HTTPS
     },
 });
+
+export interface SessionData {
+    user?: User;
+    message?: FlashMessage;
+}
