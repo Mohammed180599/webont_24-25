@@ -37,14 +37,14 @@ export interface PaymentMethod {
     bankAccountNumber?: string;
 }
 
-// Simplified user type for sessions
+// Sessie gebruiker
 export interface SessionUser {
     id: string;
     name: string;
     email: string;
 }
 
-// Extend Express Request to include 'user' of type SessionUser
+// Tijdelijke code
 declare global {
     namespace Express {
         interface Request {
