@@ -4,7 +4,6 @@ import { users } from "../database";
 import bcrypt from "bcrypt";
 import { User } from "../interfaces";
 
-
 export function loginRouter() {
     const router = express.Router();
     // Login page
@@ -32,7 +31,11 @@ router.post("/login", async (req, res: any) => {
         }
 
         // Sla de gebruikers-ID op in de sessie
-        req.session.user = user;
+        req.session.user = {
+            id: user.id,
+            name: user.name,
+            email: user.email
+        };
         console.log(`Gebruiker ingelogd: ${user.name}`);
 
         res.redirect("/index");

@@ -1,7 +1,7 @@
 import session from "express-session";
 import MongoDBStore from "connect-mongodb-session";
 import dotenv from "dotenv";
-import { User } from "./interfaces";
+import { SessionUser, User } from "./interfaces";
 
 dotenv.config();
 
@@ -11,7 +11,7 @@ const uri = process.env.URI || "mongodb://localhost:27017";
 
 declare module "express-session" {
     export interface SessionData {
-        user: User
+        user: SessionUser;
     }
 }
 

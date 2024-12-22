@@ -36,3 +36,19 @@ export interface PaymentMethod {
     };
     bankAccountNumber?: string;
 }
+
+// Simplified user type for sessions
+export interface SessionUser {
+    id: string;
+    name: string;
+    email: string;
+}
+
+// Extend Express Request to include 'user' of type SessionUser
+declare global {
+    namespace Express {
+        interface Request {
+            user?: SessionUser;
+        }
+    }
+}
